@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une periode{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+
+<div class="example-wrapper mt-2 row ml-3">
+    <div class="col-11 pl-5 ml-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home_admin') }}">Accueil</a></li>
+                <li class="breadcrumb-item active">Cree une Periode</li>
+            </ol>
+        </nav>
+        <div class=" d-flex justify-content-center mt-5 p-0">
+            <div class="bg-yellow col-11">
+                <h3 class="h1 p-0 text-center">Renseigner les information</h3>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-5 pb-5 pt-3">
+                    <div class="rounded shadow p-5 offset-4 col-4 mb-4 d-flex justify-content-center">
+                        {{ form_start(my_form) }}
+                            <div class="form-group">
+                                <label for="inputEmail4">Annee</label>
+                                {{ form_widget(my_form.annee,{'attr':{'class':'form-control px-2','placeholder':'1960','type':'file'}}) }}
+                                {{ form_errors(my_form.annee,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4">Date de debut</label>
+                                {{ form_widget(my_form.dateDebut,{'attr':{'class':'form-control px-2','type':'file'}}) }}
+                                {{ form_errors(my_form.dateDebut,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4">Date de fin</label>
+                                {{ form_widget(my_form.dateFin,{'attr':{'class':'form-control px-2','type':'file'}}) }}
+                                {{ form_errors(my_form.dateFin,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            {{ form_row(my_form.Enregistrer,{'attr':{'class':'form-control offset-2 col-8 bg-yellow mt-5 mb-2'}}) }}
+                        {{ form_end(my_form) }}
+                    </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

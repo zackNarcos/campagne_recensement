@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowCountryController!{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home_admin') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('show_detail_country',{pays:'Guinee',periode:periode.annee}) }}">Pays</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Enregistrement</li>
+            </ol>
+        </nav>
+        <div class=" d-flex justify-content-center mt-5 p-3">
+            <div class="bg-yellow col-11">
+                <h3 class="h1 p-0 text-center">Tableau de Données  </h3>
+            </div>
+        </div>
+
+
+        <table class="table mt-4 mb-5 pb-5">
+            <thead>
+            <tr class="bg-yellow border-danger text-dark sticky-top">
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Date et Lieu de Naissance</th>
+                <th scope="col">Statut Social</th>
+                <th scope="col">Profession</th>
+                <th scope="col">Nom de la structure </th>
+                <th scope="col">Filière/domaine d’activité</th>
+                <th scope="col">Quartier</th>
+                <th scope="col">Boursier/Salarier</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Ville</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set i=0 %}
+            {% for enregistrement in enregistrements %}
+                {% set i = i+1 %}
+                <tr>
+                    <th scope="row">{{ i }}</th>
+                    <td>{{ enregistrement.nom }}</td>
+                    <td>{{ enregistrement.prenom }}</td>
+                    <td>{{ enregistrement.dateNaiss|format_date() }} à {{ enregistrement.lieuNaiss }}</td>
+                    <td>{{ enregistrement.statutSocial }}</td>
+                    <td>{{ enregistrement.profession }}</td>
+                    <td>{{ enregistrement.nomStructure }}</td>
+                    <td>{{ enregistrement.domaine }}</td>
+                    <td>{{ enregistrement.quartier }}</td>
+                    <td>{{ enregistrement.boursierSalarier }}</td>
+                    <td>{{ enregistrement.contact }}</td>
+                    <td>{{ enregistrement.mail }}</td>
+                    <td>{{ enregistrement.ville }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

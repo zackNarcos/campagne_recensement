@@ -1,0 +1,43 @@
+.bg-yellow{
+    background-color: #fff200;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: #bebebe 2px 2px 6px;
+    color: white;
+}
+.bg-linear-gradient-blue{
+    background-image: linear-gradient(to right,#8E9BB2,#1B3371);
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: #bebebe 0px 3px 8px;
+}
+.bg-container{
+    background-color: #ced4da;
+}
+.card-stat{
+    /*height: 180px;*/
+    background-color: white;
+}
+.periode-message{
+    background-color: #050962;
+    border-radius: 4px;
+    color: white;
+}
+.periode-message :hover{
+    background-color: #373a7c;
+    color: white;
+}
+
+.radius{
+    border-radius: 11px ;
+}
+
+/*_____form_______*/
+/*_____form_______*/
+/*_____form_______*/
+/*_____form_______*/
+
+
+
+
+

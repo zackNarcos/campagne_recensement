@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowCountryController!{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+
+<div class="example-wrapper mt-2 row ml-3">
+    <div class="col-2 radius shadow pt-3" style="height: 600px">
+        <form>
+            <fieldset >
+
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Pays</label>
+                    <div class="card mb-2">
+                        <a href="{{ path('home_admin') }}" class="nav-link text-dark">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('flags/'~pays.image.chemin) }}" class="img-fluid rounded" alt="...">
+                                </div>
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="">{{ pays.nom }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    <label for="disabledTextInput" class="form-label">Recensement</label>
+                <div class="mb-3 nav-link border rounded">
+                    <button id="btnGroupDrop1" type="button" class="btn form-control pb-4 btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Periode
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        {% for periode in periodes %}
+                            <li><a class="dropdown-item" href="{{ path('show_detail_country',{pays:pays.nom,periode:periode.annee}) }}">{{ periode.annee }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="mb-3 nav-link border rounded">
+                    <a href="{{ path('add_periode') }}" class="btn form-control pb-4 btn-outline-dark">
+                        Cree une Periode
+                    </a>
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Vérification</label>
+                    <div class="card mb-2">
+                        <a href="{{ path('valid_registration') }}" class="nav-link p-1 text-dark">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('image/PIN.jpeg') }}" class="img-fluid rounded" alt="...">
+                                </div>
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="">Piece d’identité</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Recensement</label>
+                    <div class="card mb-2">
+                        <a href="{{ path('show_detail_registration_by_country',{pays:pays.nom,periode:periode}) }}" class="nav-link p-1 text-dark">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('image/logo – 1.svg') }}" class="img-fluid rounded" alt="...">
+                                </div>
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="">Enregistrements</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-9 pl-5 ml-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home_admin') }}">Accueil</a></li>
+                <li class="breadcrumb-item active">Pays</li>
+{#                <li class="breadcrumb-item active" aria-current="page">Enregistrement</li>#}
+            </ol>
+        </nav>
+        <div class=" d-flex justify-content-center mt-5 p-0">
+            <div class="bg-yellow col-11">
+                <h3 class="h1 p-0 text-center">Données Statistique </h3>
+            </div>
+        </div>
+
+        <div class="mt-5 pt-3">
+            <div class="row">
+
+                <div class="col-xl-3 col-sm-6">
+
+                    <div class="card radius shadow">
+                        <div class="bg-primary shadow text-light radius p-3 text-center text-light ml-3 mt-n4 position-absolute">
+                            <img class=" text-light" src="{{ asset('icones/icons8-conférence-téléphonique-50.png') }}">
+                        </div>
+                        <div class="card-body mt-5 pt-3">
+                            <h5 class="card-title">Recensées</h5>
+                            <p class="h2">{{ allRegistration }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+
+                    <div class="card radius shadow">
+                        <div class="bg-success shadow text-light radius p-3 text-center text-light ml-3 mt-n4 position-absolute">
+                            <img class=" text-light" src="{{ asset('icones/icons8-travail-50.png') }}">
+                        </div>
+                        <div class="card-body mt-5 pt-3">
+                            <h5 class="card-title">Fonctionnaire</h5>
+                            <p class="h2">{{ workerRegistration }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+
+                    <div class="card radius shadow">
+                        <div class="bg-warning shadow text-light radius p-3 text-center text-light ml-3 mt-n4 position-absolute">
+                            <img class=" text-light" src="{{ asset('icones/icons8-élèves-50.png') }}">
+                        </div>
+                        <div class="card-body mt-5 pt-3">
+                            <h5 class="card-title">Etudiant</h5>
+                            <p class="h2">{{ studentRegistration }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6">
+
+                    <div class="card radius shadow">
+                        <div class="bg-danger shadow text-light radius p-3 text-center text-light ml-3 mt-n4 position-absolute">
+                            <img class=" text-light" src="{{ asset('icones/icons8-16-48.png') }}">
+                        </div>
+                        <div class="card-body mt-5 pt-3">
+                            <h5 class="card-title">Chômeur</h5>
+                            <p class="h2">{{ chomeurRegistration }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

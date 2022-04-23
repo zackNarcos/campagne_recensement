@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormRegistrationController!{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+<div class=" d-flex justify-content-center mt-5 p-3">
+    <div class="bg-yellow w-75">
+        <h3 class="h1 p-3 text-center">Renseigner vos informations </h3>
+    </div>
+</div>
+<div class=" d-flex justify-content-center mt-3">
+    <div class="rounded shadow p-5 col-7 mb-4">
+        {{ form_start(my_form) }}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Nom</label>
+                {{ form_widget(my_form.nom,{'attr':{'class':'form-control px-2','placeholder':'Email','id':'inputEmail4'}}) }}
+                {{ form_errors(my_form.nom,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Prenom</label>
+                {{ form_widget(my_form.prenom,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+                {{ form_errors(my_form.prenom,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Date Naissance</label>
+                {{ form_widget(my_form.dateNaiss,{'attr':{'class':'form-control px-2','placeholder':'Email','id':'inputEmail4'}}) }}
+                {{ form_errors(my_form.dateNaiss,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPassword4">Lieu de Naissance</label>
+                {{ form_widget(my_form.lieuNaiss,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+                {{ form_errors(my_form.lieuNaiss,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPhone">Téléphone</label>
+                {{ form_widget(my_form.contact,{'attr':{'class':'form-control px-2','placeholder':'Téléphone','id':'inputPhone'}}) }}
+                {{ form_errors(my_form.contact,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Adresse mail</label>
+            {{ form_widget(my_form.mail,{'attr':{'class':'form-control px-2','placeholder':'Nom','id':'inputAddress'}}) }}
+            {{ form_errors(my_form.mail,{'attr':{'class':'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class=" d-flex justify-content-center">
+    <div class="rounded shadow p-5 col-7 mb-4">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Ville de residence</label>
+                {{ form_widget(my_form.ville,{'attr':{'class':'form-control px-2','placeholder':'Email','id':'inputEmail4'}}) }}
+                {{ form_errors(my_form.ville,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPassword4">Quartier</label>
+                {{ form_widget(my_form.quartier,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+                {{ form_errors(my_form.quartier,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPhone">Pays de residence</label>
+                {{ form_widget(my_form.pays,{'attr':{'class':'form-control px-2','placeholder':'Téléphone','id':'inputPhone'}}) }}
+                {{ form_errors(my_form.pays,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" d-flex justify-content-center mb-4">
+    <div class="rounded shadow p-5 col-7">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Statut Social</label>
+                {{ form_widget(my_form.statutSocial,{'attr':{'class':'form-control px-2','placeholder':'Email','id':'inputEmail4'}}) }}
+                {{ form_errors(my_form.statutSocial,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Profession</label>
+                {{ form_widget(my_form.profession,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+                {{ form_errors(my_form.profession,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputPassword4">Boursier/Salarier</label>
+                {{ form_widget(my_form.boursierSalarier,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+                {{ form_errors(my_form.boursierSalarier,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="inputEmail4">Nom de la structure/Nom établissement Fréquenté</label>
+            {{ form_widget(my_form.nomStructure,{'attr':{'class':'form-control px-2','placeholder':'Email','id':'inputEmail4'}}) }}
+            {{ form_errors(my_form.nomStructure,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            <label for="inputPassword4">Filiaire suivi/domaine d’activité</label>
+            {{ form_widget(my_form.domaine,{'attr':{'class':'form-control px-2','placeholder':'Password','id':'inputPassword4'}}) }}
+            {{ form_errors(my_form.domaine,{'attr':{'class':'form-control bg-dark px-2'}}) }}
+        </div>
+    </div>
+</div>
+<div class=" d-flex justify-content-center mb-5">
+    <div class="rounded shadow p-5 col-7 mb-5">
+            <div class="form-group">
+                <label for="inputEmail4">Televerser une image de votre piece</label>
+                {{ form_widget(my_form.image,{'attr':{'class':'form-control px-2','type':'file'}}) }}
+                {{ form_errors(my_form.image,{'attr':{'class':'form-control'}}) }}
+            </div>
+        {{ form_row(my_form.Enregistrer,{'attr':{'class':'form-control offset-2 col-8 bg-yellow mt-5 mb-2'}}) }}
+        {{ form_end(my_form) }}
+    </div>
+</div>
+{% endblock %}

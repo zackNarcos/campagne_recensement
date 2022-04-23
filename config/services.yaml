@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    registration_directory: '%kernel.project_dir%/public/image/registration'
 
 services:
     # default configuration for services in *this* file
@@ -21,5 +22,8 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%registration_directory%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowCountryController!{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+
+<div class="example-wrapper mt-2 row ml-3">
+    <div class="col-11 pl-5 ml-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home_admin') }}">Accueil</a></li>
+                <li class="breadcrumb-item active">Validation</li>
+{#                <li class="breadcrumb-item active" aria-current="page">Enregistrement</li>#}
+            </ol>
+        </nav>
+        <div class=" d-flex justify-content-center mt-5 p-0">
+            <div class="bg-yellow col-11">
+                <h3 class="h1 p-0 text-center">Vérification de Piece</h3>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-5 pb-5 pt-3">
+            <div class="row d-flex align-items-center">
+                <div class="offset-2 col-1">
+
+                    {% if previous >= 0 %}
+                        <a href="{{ path('valid_registration', { offset: previous }) }}">
+                            <img src="{{ asset('image/icon-chevron-double-left.png') }}">
+                        </a>
+                    {% endif %}
+
+                </div>
+                <div class="col-6">
+                    {% if enregistrements|length > 0 %}
+                    {% for enregistrement in enregistrements %}
+                    <div class="card w-100">
+                        <img src="{{ asset('image/registration/'~ enregistrement.image.chemin ) }}" class="card-img-top" alt="..." style="height: 350px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ enregistrement.nom }} {{ enregistrement.prenom }}</h5>
+                            <p class="card-text"> Pays: {{ enregistrement.pays.nom }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Né {{ enregistrement.dateNaiss|format_date() }} au {{ enregistrement.lieuNaiss }}</li>
+                            <li class="list-group-item">Statut: {{ enregistrement.statutSocial }}, {{ enregistrement.profession }}</li>
+                            <li class="list-group-item">Structure & Domaine d'activité: {{ enregistrement.nomStructure }}, {{ enregistrement.domaine }}</li>
+                            <li class="list-group-item">Reside à: {{ enregistrement.quartier }}, {{ enregistrement.ville }}</li>
+                            <li class="list-group-item">Contact: <i class="btn btn-outline-dark">Tel: {{ enregistrement.contact }}</i>, E-mail: {{ enregistrement.mail }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ path('down_registration', { id: enregistrement.id }) }}" class="btn btn-outline-danger">Archiver</a>
+                            <a href="{{ path('up_registration', { id: enregistrement.id }) }}" class="btn btn-outline-success">Valider</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <div>Pas d'enregistrement pour cette periode.</div>
+                    {% endif %}
+{#                    {{ knp_pagination_render(enregistrements) }}#}
+                </div>
+                <div class="col-1">
+                    {% if next < enregistrements|length %}
+                        <a href="{{ path('valid_registration', { offset: next }) }}">
+                            <img src="{{ asset('image/chevron-double-right.svg') }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

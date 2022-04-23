@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeAdminController!{% endblock %}
+{% block periode_en_cours %}{{ jourRestant }}{% endblock %}
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="mt-5 d-flex justify-content-around">
+    <div class=" shadow col-3 radius">
+        <div class="p-4 ">
+            <a class="" href="{{ path('show_detail_country',{pays:'Senegal',periode:periode}) }}"><img src="{{ asset('flags/Groupe 6.svg') }}"></a>
+        </div>
+    </div>
+    <div class=" shadow col-3 radius">
+        <div class=" p-4 ">
+            <a class="" href="{{ path('show_detail_country',{pays:'Gambie',periode:periode}) }}"><img src="{{ asset('flags/Groupe 7.svg') }}"></a>
+        </div>
+    </div>
+    <div class="  shadow  col-3 radius">
+        <div class="p-4 ">
+            <a class="" href="{{ path('show_detail_country',{pays:'Cabo Verde',periode:periode}) }}"><img src="{{ asset('flags/Groupe 8.svg') }}"></a>
+        </div>
+    </div>
+
+</div>
+<div class="mt-5 d-flex justify-content-center">
+    <div class=" shadow col-3 mr-5 radius">
+        <div class="p-4 ">
+            <a class="" href="{{ path('show_detail_country',{pays:'Guinee',periode:periode}) }}"><img src="{{ asset('flags/Groupe 10.svg') }}"></a>
+        </div>
+    </div>
+    <div class=" shadow col-4 ml-5 radius">
+        <div class=" p-4 ">
+            <a class="" href="{{ path('show_detail_country',{pays:'Guinee Bissau',periode:periode}) }}"><img src="{{ asset('flags/Groupe 11.svg') }}"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
